@@ -1,0 +1,10 @@
+
+VCFtools - 0.1.14
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf output_files/populations.snps.vcf
+	--exclude wanaka_inds.txt
+	--recode
+
+Error: Can't determine file type of output_files/populations.snps.vcf

@@ -135,9 +135,14 @@ I am therefore happy with this SNP filtering that outputted 17314 SNPs in total.
 
 to try to maximise PCA and faststructure resolution, I create a version without missing data.
 
+It has also been brought to my attention that X and Y are technical replicates, I remove WK16-48. I also manally removed it from [metadata/metadata_clean.txt]()
+
+
 ```
-vcftools --vcf populations.snps.vcf --max-missing 1.0 --recode 
-mv out.recode.vcf populations.snps.NOMISSING.vcf
+grep -v work16-48  popmap_allNONEG.txt > popmap_allNONEGnowak16-48.txt
+ populations -P output_M2/ -M popmap_allNONEGnowak16-48.txt  --vcf --structure --plink --treemix --max-obs-het 0.65 -r 1  --write-single-snp # then filter it without
+
 ```
 
-That is the final version of the SNP calling and the vcf as well as some other format go into [output_files/](output_files)
+
+9605 variants remained. I put the output_files in [output_files/ppopulations.snps.vcf](output_files/ppopulations.snps.vcf)

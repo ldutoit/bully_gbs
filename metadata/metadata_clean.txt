@@ -2,7 +2,6 @@ sample	Lake	depth	group	sex	flowcell	lane	barcode	sample	platename	enzyme	specie
 WK16-02	Wanaka	90	Deep	m	CA62JANXX	1	CGTGGAA	WK16-02	GBS2030	PstI	Bully	96	0
 WK16-16	Wanaka	90	Deep	m	CA62JANXX	1	ACTTGGT	WK16-16	GBS2030	PstI	Bully	96	0
 WK16-33	Wanaka	60	Deep	f	CA62JANXX	1	TGTTGCA	WK16-33	GBS2030	PstI	Bully	96	0
-WK16-48	Wanaka	30	Shallow	m	CA62JANXX	1	ACCAAGT	WK16-48	GBS2030	PstI	Bully	96	0
 WK16-66	Wanaka	15	Shallow	f	CA62JANXX	1	ATTGTCG	WK16-66	GBS2030	PstI	Bully	96	0
 WK16-80	Wanaka	5	Shallow	f	CA62JANXX	1	TAACACG	WK16-80	GBS2030	PstI	Bully	96	0
 WK16-97	Wanaka	5	Shallow	m	CA62JANXX	1	GCCACTA	WK16-97	GBS2030	PstI	Bully	96	0
