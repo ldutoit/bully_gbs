@@ -2,7 +2,7 @@
 title: "Structure exploration"
 author: "Ludovic Dutoit"
 date: "10/21/2019"
-output: github_document
+output: html_document
 ---
 
 
@@ -246,19 +246,28 @@ basic.stats(hierfstatdatawakatipu)$overall
 
 One can see from this that Wanaka is more variable than Wakatipu!
 
-Now onto some Fst!
-
-```{r}
-genet.dist(hierfstatdata2lakes)
+```{4}
+genet.dist(hierfstatdata2lakes,method="WC84")
 ```
 
-Fst between the two lakes is 0.037
+
 
 ```{r}
-matrix_4_depth_fst<-as.matrix(genet.dist(hierfstatdataall))
+matrix_4_depth_fst<-as.matrix(genet.dist(hierfstatdataall,,method="WC84"))
 colnames(matrix_4_depth_fst)<-levels(hierfstatdataall$pop)
 rownames(matrix_4_depth_fst)<-levels(hierfstatdataall$pop)
 matrix_4_depth_fst
 ```
 
-As expected, little to no structure within pop, little between lakes!
+
+
+```{r}
+#test significance of fst between lakes
+test<-boot.ppfst(hierfstatdata2lakes)
+test$ul # upper limit of CI
+test$ll  # lower limit of CI
+
+#test for pops
+test_matrix_4_depth_fst<-boot.ppfst(hierfstatdataall)
+test_matrix_4_depth_fst$ul # upper limit of CI
+test_matrix_4_depth_fst$ll

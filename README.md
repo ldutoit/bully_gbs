@@ -19,7 +19,7 @@ The SNP calling is done [SNPcalling.md](SNPcalling.md) with Stacks/2.41.
 
 ## Population structure analysis
 
-[structurexploration.md](structurexploration.md) makes a principal component analysis of the data, visualised by lake, exact depth or deep vs shallow. The data clearly cluster by lake, not so much by depth. I went on to do a faststructure analysis varying K between 2 to 5 with within lakes dataset or from K=2 to K=10 when grouping lakers together.  There is no structure whatsoever beyond lake.
+[structureexploration.md](structureexploration.md) makes a principal component analysis of the data, visualised by lake, exact depth or deep vs shallow. The data clearly cluster by lake, not so much by depth. I went on to do a faststructure analysis varying K between 2 to 5 with within lakes dataset or from K=2 to K=10 when grouping lakers together.  There is no structure whatsoever beyond lake.
 
 NOTE: two individuals where clustering on their own at the first PCA and have been excluded from further PCA and Structure analyses.
 
