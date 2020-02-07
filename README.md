@@ -27,3 +27,7 @@ NOTE: two individuals where clustering on their own at the first PCA andare actu
 
 All output_files are in [output_files](output_files). Note that samples metadata and barcodes information is in [metadata](metadata). Most of the figures are visualised directly from within [structurexploration.md](structurexploration.md), the pca score as stored in [output_files/scores_pca.txt] and the faststructureoutput are in [faststructure/](faststructure)
 
+
+## Tutorial
+
+this simple analysis provided an ideal opportunity for an easy tutorial. [populationstructure_tuto/populationstructure_tuto.md](populationstructure_tuto/populationstructure_tuto.md) can be followed to explore basic population genetics and structure.
