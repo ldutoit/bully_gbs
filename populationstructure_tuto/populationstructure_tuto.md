@@ -27,7 +27,7 @@ data <- read.pcadapt("populations.snps.vcf", type = "vcf") # New dataset https:/
     ## Summary:
     ## 
     ##  - input file:               populations.snps.vcf
-    ##  - output file:              /var/folders/1g/hdrjtwrj77b1g8ll485bl2sw0000gq/T//RtmpqOLWOO/file27ff44964ee5.pcadapt
+    ##  - output file:              /var/folders/1g/hdrjtwrj77b1g8ll485bl2sw0000gq/T//RtmpvCurZt/file294d528e8c4c.pcadapt
     ## 
     ##  - number of individuals detected:   94
     ##  - number of loci detected:      9605
@@ -282,9 +282,9 @@ plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplaban
 
     ## Drawing plot ...
 
-    ## faststructureK2toK10Joined9Files-20200207161529.png exported.
+    ## faststructureK2toK10Joined9Files-20200207163058.png exported.
 
-![](faststructureK2toK10Joined9Files-20200207152243.png)
+![](populationstructure_tuto_files/faststructureK2toK10Joined9Files-20200207152243.png)
 
 Looking at that file, We can clearly see the two clusters regardless of the set K. But individuals are not ordered by populations. Let's fix that to get pretty plots. Altough I could have provided us with clean and ordered files to start with, this is a common issue so let's go together through re-ordering faststructure files.
 
@@ -360,9 +360,9 @@ plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplaban
 
     ## Drawing plot ...
 
-    ## Joined9Files-20200207161555.png exported.
+    ## Joined9Files-20200207163128.png exported.
 
-![](Joined9Files-20200207152308.png)
+![](populationstructure_tuto_files/Joined9Files-20200207152308.png)
 
 Great! Rows are K = 2 to K = 10. and the individuals are now sorted by lake. We'll make a final plot with only K=2 that looks a bit prettier:
 
@@ -374,6 +374,6 @@ plotQ(flist[2],imgoutput ="sep", showindlab=T,useindlab=T ,height=7,width=35,grp
 
     ## K2reordered.snps.2.png exported.
 
-![](K2reordered.snps.2.png)
+![](populationstructure_tuto_files/K2reordered.snps.2.png)
 
 Well done!

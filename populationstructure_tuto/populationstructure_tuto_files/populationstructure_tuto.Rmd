@@ -135,7 +135,7 @@ indcodes <- metadata[,1]
 plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplabangle=0,,ordergrp=T,exportpath= "faststructureK2toK10")
 ```
 
-![](populationstructure_tuto_files/faststructureK2toK10Joined9Files-20200207152243.png)
+![](faststructureK2toK10Joined9Files-20200207152243.png)
 
 Looking at that file, We can clearly see the two clusters regardless of the set K. But individuals are not ordered by populations. Let's fix that to get pretty plots. Altough I could have provided us with clean and ordered files to start with, this is a common issue so let's go together through re-ordering faststructure files. 
 
@@ -177,7 +177,7 @@ print(ffiles)
 plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplabangle=0,,ordergrp=T)
 ```
 
-![](populationstructure_tuto_files/Joined9Files-20200207152308.png)
+![](Joined9Files-20200207152308.png)
 
 Great! Rows are  K = 2 to  K = 10. and the individuals are now sorted by lake. We'll make a final plot with only K=2 that looks a bit prettier:
 
@@ -185,6 +185,6 @@ Great! Rows are  K = 2 to  K = 10. and the individuals are now sorted by lake. W
 plotQ(flist[2],imgoutput ="sep", showindlab=T,useindlab=T ,height=7,width=35,grplabangle=0,exportpath="K2", rainbow(2),showdiv=TRUE,clustercol=c("red","blue"),divcol="white",divtype=1,divsize=1,sortind=NA,grplab=NA)
 ```
 
-![](populationstructure_tuto_files/K2reordered.snps.2.png)
+![](K2reordered.snps.2.png)
 
 Well done!
