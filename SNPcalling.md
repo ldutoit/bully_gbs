@@ -87,7 +87,7 @@ sbatch -A uoo00116 -t 1-00:00:00 --partition=long -J cleanM2 -c 16 --mem=64G cle
 We then run populations excluding no samples and only the SNPs with more than 65% heterozygosity as likely collapsed paralogs and remove any SNP not covered in at least 80% of individuals.
 
 ```bash
- populations -P output_M2/ -M popmap_allNONEG.txt  --vcf --structure --plink --treemix --max-obs-het 0.65 -r 0.8  --write-single-snp # then filter it without
+ populations -P output_M2/ -M popmap_allNONEG.txt  --vcf --structure --plink --treemix --max-obs-het 0.65 -r 0.8  --write-single-snp # then filter it withoutq
  ```
 
 

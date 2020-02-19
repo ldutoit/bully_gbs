@@ -8,7 +8,13 @@ Summary
 
 In this quick example script, we will examplify basic population genetics analyses of a GBS a dataset of *Gobiomorphus cotidianus* between two New Zealand lake: Wakatipu (WP) and Wanaka (WK).
 
-any questions or access to datafile to <dutoit.ludovic@gmail.com>. The pipeline require several R packages for different parts and should be installed while moving along.
+For any questions or access to data files to <dutoit.ludovic@gmail.com>. The pipeline require several R packages for different parts that should be installed in your system. The links below refer to all the installations:
+
+-   [pcadapt](https://cran.r-project.org/web/packages/pcadapt/vignettes/pcadapt.html)
+-   [hierfstat](https://github.com/jgx65/hierfstat)
+-   [vcfR](https://rdrr.io/cran/vcfR/)
+-   [poppr](https://cran.r-project.org/web/packages/poppr/readme/README.html)
+-   [pophelper](http://www.royfrancis.com/pophelper/articles/index.html)
 
 Loading files
 -------------
@@ -27,7 +33,7 @@ data <- read.pcadapt("populations.snps.vcf", type = "vcf") # New dataset https:/
     ## Summary:
     ## 
     ##  - input file:               populations.snps.vcf
-    ##  - output file:              /var/folders/1g/hdrjtwrj77b1g8ll485bl2sw0000gq/T//RtmpvCurZt/file294d528e8c4c.pcadapt
+    ##  - output file:              /var/folders/1g/hdrjtwrj77b1g8ll485bl2sw0000gq/T//RtmpXyQUBh/file1212c64cfe02d.pcadapt
     ## 
     ##  - number of individuals detected:   94
     ##  - number of loci detected:      9605
@@ -282,7 +288,7 @@ plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplaban
 
     ## Drawing plot ...
 
-    ## faststructureK2toK10Joined9Files-20200207163058.png exported.
+    ## faststructureK2toK10Joined9Files-20200220121348.png exported.
 
 ![](populationstructure_tuto_files/faststructureK2toK10Joined9Files-20200207152243.png)
 
@@ -360,7 +366,7 @@ plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplaban
 
     ## Drawing plot ...
 
-    ## Joined9Files-20200207163128.png exported.
+    ## Joined9Files-20200220121405.png exported.
 
 ![](populationstructure_tuto_files/Joined9Files-20200207152308.png)
 

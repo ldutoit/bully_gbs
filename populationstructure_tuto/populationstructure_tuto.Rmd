@@ -9,9 +9,14 @@ output: github_document
 
 In this quick example script, we will examplify basic population genetics analyses of a GBS a dataset of *Gobiomorphus cotidianus* between two New Zealand lake: Wakatipu (WP) and Wanaka (WK).
 
-any questions or access to datafile to dutoit.ludovic@gmail.com. The pipeline require several R packages for different parts and should be installed while moving along.
+For any questions or access to data files to dutoit.ludovic@gmail.com. The pipeline require several R packages for different parts that should be installed in your system. The links below refer to all the installations:
 
-  
+* [pcadapt](https://cran.r-project.org/web/packages/pcadapt/vignettes/pcadapt.html)
+* [hierfstat](https://github.com/jgx65/hierfstat)
+* [vcfR](https://rdrr.io/cran/vcfR/)
+* [poppr](https://cran.r-project.org/web/packages/poppr/readme/README.html)
+* [pophelper](http://www.royfrancis.com/pophelper/articles/index.html)
+
 ## Loading files
 ```{r,,message=F}
 require("pcadapt")
