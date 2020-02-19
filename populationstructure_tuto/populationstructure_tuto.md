@@ -1,4 +1,4 @@
-Exploration of populatiuon structure using GBS
+Exploration of population structure using GBS
 ================
 Ludovic Dutoit
 2/7/2019
