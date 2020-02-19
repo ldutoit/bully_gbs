@@ -10,7 +10,7 @@ In this quick example script, we will examplify basic population genetics analys
 
 For any questions or access to data files to <dutoit.ludovic@gmail.com>. The pipeline require several R packages for different parts that should be installed in your system. The links below refer to all the installations:
 
--   [pcadapt](https://cran.r-project.org/web/packages/pcadapt/vignettes/pcadapt.html)
+-   [pcadapt](https://github.com/bcm-uga/pcadapt)
 -   [hierfstat](https://github.com/jgx65/hierfstat)
 -   [vcfR](https://rdrr.io/cran/vcfR/)
 -   [poppr](https://cran.r-project.org/web/packages/poppr/readme/README.html)
