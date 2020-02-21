@@ -174,7 +174,7 @@ basic.stats(hierfstatdataall)$overall # get the basic stats
 Some important information in there! Let's also do a pwiarwise Fst Matrix based on Weir and Cockerham, 1984.
 
 ``` r
-matrix_4_depth_fst<-as.matrix(genet.dist(hierfstatdataall,,method="WC84"))
+matrix_4_depth_fst<-as.matrix(genet.dist(hierfstatdataall,method="WC84"))
 colnames(matrix_4_depth_fst)<-levels(hierfstatdataall$pop)
 rownames(matrix_4_depth_fst)<-levels(hierfstatdataall$pop)
 matrix_4_depth_fst
