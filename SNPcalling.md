@@ -145,4 +145,4 @@ grep -v work16-48  popmap_allNONEG.txt > popmap_allNONEGnowak16-48.txt
 ```
 
 
-9605 variants remained. I put the output_files in [output_files/ppopulations.snps.vcf](output_files/ppopulations.snps.vcf)
+9605 variants remained. I put the output_files in [output_files/populations.snps.vcf](output_files/populations.snps.vcf)
