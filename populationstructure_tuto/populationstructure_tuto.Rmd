@@ -99,6 +99,12 @@ The fastStructure code below is bash and should be run in the shell not in R. If
 getwd()
 ```
 
+I you are using the mahuika server from NeSI, fastStructure is vailable as a module, simply run:
+
+```
+module load fastStructure # This WILL ONLY RUN on the mahuika server, not on your laptop
+```
+
 We run it for K=2 to K=10 as there is 10 sampling locations. It makes no sense to go above 10.
 
 ```{bash,eval=F}
