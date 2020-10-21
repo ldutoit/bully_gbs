@@ -210,7 +210,7 @@ plot(x, option = "scores", pop=metadata$lake)  # you can put any factor as the g
 
 Again, we find the lake structure.
 
-fastStructure analsyis
+fastStructure analysis
 ----------------------
 
 *"fastStructure is an algorithm for inferring population structure from large SNP genotype data. It is based on a variational Bayesian framework for posterior inference and is written in Python2.x."*
