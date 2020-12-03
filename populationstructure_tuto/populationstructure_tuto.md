@@ -219,7 +219,7 @@ fastStructure analysis
 
 Note that once converted the file, faststructure arguments should not have the extension. Below *populations.snps* is referring to *populations.snps.str*.
 
-**fastStructure run** The fastStructure code below is bash and should be run in the shell not in R. If you are not sure where you are located in your computer you can obtain with the following R command:
+**fastStructure run** The fastStructure code below is bash and should be run in the unix shell (that you perhaps know as the Terminal) **not** in R or Rstudio. If you are not sure where you are located in your computer you can obtain with the following R command:
 
 ``` r
 getwd()
