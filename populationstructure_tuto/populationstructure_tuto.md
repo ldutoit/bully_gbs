@@ -231,9 +231,12 @@ We run it for K=2 to K=10 as there is 10 sampling locations. It makes no sense t
 
 ``` bash
 #create output folders for the analysis and for later plots
-mkdir faststructure_exploration plots 
+mkdir faststructure_exploration plots  # Make those two output directories
 module load fastStructure  # speciic to the way faststructure  is installed on the NeSI infrastructure
-structure.py -K 2  --input=populations.snps --output=faststructure_exploration/populations.snps --format=str
+
+# structure.py is part of fastStructure and it is loaded with it!
+
+structure.py -K 2  --input=populations.snps --output=faststructure_exploration/populations.snps --format=str 
 structure.py -K 3  --input=populations.snps --output=faststructure_exploration/populations.snps --format=str
 structure.py -K 4  --input=populations.snps --output=faststructure_exploration/populations.snps --format=str
 structure.py -K 5  --input=populations.snps --output=faststructure_exploration/populations.snps --format=str
