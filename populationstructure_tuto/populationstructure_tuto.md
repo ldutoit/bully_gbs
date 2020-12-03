@@ -254,6 +254,9 @@ chooseK.py --input=faststructure_exploration/populations.snps
 
 The choose K function suggests K=2 that only the structure between lake is clearly visible, let's see how it looks like in practice:
 
+
+It is time to get back into R:
+
 ``` r
 require("pophelper") # to install: http://www.royfrancis.com/pophelper/articles/index.html
 ```
