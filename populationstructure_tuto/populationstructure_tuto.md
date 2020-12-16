@@ -298,13 +298,25 @@ plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplaban
 
 ![](populationstructure_tuto_files/faststructureK2toK10Joined9Files-20200207152243.png)
 
-Looking at that file, We can clearly see the two clusters regardless of the set K. But individuals are not ordered by populations. Let's fix that to get pretty plots. Altough I could have provided us with clean and ordered files to start with, this is a common issue so let's go together through re-ordering faststructure files.
+Looking at that file, We can clearly see the two clusters regardless of the set K. **But individuals are not ordered by populations.** Let's fix that to get pretty plots. Altough I could have provided us with clean and ordered files to start with, this is a common issue so let's go together through re-ordering faststructure files.
 
+The easiest way to deal with re-ordering will be to have a version of [metadata_clean.txt](metadata_clean.txt) that is sorted in the way we want our structure plots. Then we can determine the new_order of samples. I provided such a file ordered by lake [metadata_reordered.txt](metadata_reordered.txt)
 ``` r
 #determine proper order numerically from old order
-indices_of_wanaka_samples<-grep("WK",metadata[,1]) #columns number we want in group 1
-indices_of_wakatipu_samples<-grep("WP",metadata[,1])  #columns number we want in group 1
-new_order_of_the_94_samples <- c(indices_of_wanaka_samples,indices_of_wakatipu_samples)
+metadata_reordered<-read.table("metadata_reordered.txt",h=T)
+new_order<-c()
+for (sample in metadata_reordered[,1]){
+  new_order<-c(new_order,which(metadata[,1]==sample))
+}
+#IMPORTANT CHECK: ALL SAMPLES ARE HERE
+length(new_order)== dim(metadata)[1]
+
+```
+The new order is a set of numbers. the first number is the position of the first individual we want from our input file. I find orders always a bit tricky to deal with, but that might be the simplest way!
+
+Next, we re-sort all our structure files according to this re-ordered file.
+
+```
 #find files
 filestoread<-paste("faststructure_exploration/",list.files(path="faststructure_exploration/",pattern="meanQ")[grep(paste("populations.snps",sep=""),perl=T,list.files(path="faststructure_exploration/",pattern= "meanQ"))],sep="")#simply a vector of the faststructure files we want to read
 print(filestoread)# The 9 files I need to reorder to check visually!
@@ -321,10 +333,10 @@ print(filestoread)# The 9 files I need to reorder to check visually!
     ## [9] "faststructure_exploration/populations.snps.9.meanQ"
 
 ``` r
-#Eeorder every single file according to proper order
+#Reorder every single file according to proper order
 for (filename in filestoread){
   tempdata<-read.table(filename,h=F) #Read old file
-  tempdata<-tempdata[new_order_of_the_94_samples,] #reorder
+  tempdata<-tempdata[new_order,] #reorder
   newfilename = paste(strsplit(filename,".populations")[[1]][1],"/","reordered",strsplit(filename,".populations")[[1]][2],sep="")
   write.table(tempdata,newfilename,quote=F,col.names=F,row.names=F,sep="\t")
     print(paste(filename,"rewriting as",newfilename),sep="")
@@ -343,8 +355,8 @@ for (filename in filestoread){
     ## [1] "faststructure_exploration/populations.snps.9.meanQ rewriting as faststructure_exploration/reordered.snps.9.meanQ"
 
 ``` r
-#We also need to reorder the metadat
-indcodes_reordered<-paste(metadata[new_order_of_the_94_samples,1],metadata[new_order_of_the_94_samples,2],metadata[new_order_of_the_94_samples,3],"m",sep="_")
+#We also need to reorder the indcodes for the legend
+indcodes_reordered<-paste(metadata[new_order,1],metadata[new_order,2],metadata[new_order,3],"m",sep="_")
 ```
 
 We recreated all these re-ordered files. Let's make the clean plots
