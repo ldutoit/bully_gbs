@@ -1,7 +1,7 @@
 Exploration of population structure using GBS
 ================
 Ludovic Dutoit
-2/7/2019
+17/12/2020
 
 Summary
 -------
@@ -21,19 +21,24 @@ Loading files
 
 ``` r
 require("pcadapt")
+require("hierfstat") ## install those packages first https://github.com/jgx65/hierfstat
+require("vcfR")
+require("poppr")
 ```
-
-    ## Warning: package 'pcadapt' was built under R version 3.5.2
 
 ``` r
 data <- read.pcadapt("populations.snps.vcf", type = "vcf") # New dataset https://github.com/ldutoit/bully_gbs/blob/master/populationstructure_tuto/populations.snps.vcf
 ```
 
+    ## Warning in file2other(input, type, match.arg(type.out), match.arg(allele.sep)):
+    ## Converter vcf to pcadapt is deprecated. Please use PLINK for conversion to bed
+    ## (and QC).
+
     ## No variant got discarded.
     ## Summary:
     ## 
     ##  - input file:               populations.snps.vcf
-    ##  - output file:              /var/folders/1g/hdrjtwrj77b1g8ll485bl2sw0000gq/T//RtmpXyQUBh/file1212c64cfe02d.pcadapt
+    ##  - output file:              /var/folders/1g/hdrjtwrj77b1g8ll485bl2sw0000gq/T//RtmpFsKHNG/file112c835e9d44d.pcadapt
     ## 
     ##  - number of individuals detected:   94
     ##  - number of loci detected:      9605
@@ -62,54 +67,6 @@ head(metadata)
 ### Basic statistics
 
 Let's get some basic population stats (Fst, Ho)
-
-``` r
-require("hierfstat") ## install those packages first https://github.com/jgx65/hierfstat
-```
-
-    ## Loading required package: hierfstat
-
-``` r
-require("vcfR")
-```
-
-    ## Loading required package: vcfR
-
-    ## 
-    ##    *****       ***   vcfR   ***       *****
-    ##    This is vcfR 1.8.0 
-    ##      browseVignettes('vcfR') # Documentation
-    ##      citation('vcfR') # Citation
-    ##    *****       *****      *****       *****
-
-``` r
-require("poppr")
-```
-
-    ## Loading required package: poppr
-
-    ## Warning: package 'poppr' was built under R version 3.5.2
-
-    ## Loading required package: adegenet
-
-    ## Loading required package: ade4
-
-    ## 
-    ##    /// adegenet 2.1.1 is loaded ////////////
-    ## 
-    ##    > overview: '?adegenet'
-    ##    > tutorials/doc/questions: 'adegenetWeb()' 
-    ##    > bug reports/feature requests: adegenetIssues()
-
-    ## 
-    ## Attaching package: 'adegenet'
-
-    ## The following object is masked from 'package:hierfstat':
-    ## 
-    ##     read.fstat
-
-    ## This is poppr version 2.8.3. To get started, type package?poppr
-    ## OMP parallel support: available
 
 ``` r
 # a bit of play around wqith convewrsion to get a vcf into hierfstat
@@ -166,10 +123,8 @@ levels(hierfstatdataall$pop) # checking we have for pops
 basic.stats(hierfstatdataall)$overall # get the basic stats
 ```
 
-    ##      Ho      Hs      Ht     Dst     Htp    Dstp     Fst    Fstp     Fis 
-    ##  0.1281  0.1272  0.1354  0.0082  0.1381  0.0109  0.0604  0.0790 -0.0071 
-    ##    Dest 
-    ##  0.0125
+    ##      Ho      Hs      Ht     Dst     Htp    Dstp     Fst    Fstp     Fis    Dest 
+    ##  0.1281  0.1272  0.1354  0.0082  0.1381  0.0109  0.0604  0.0790 -0.0071  0.0125
 
 Some important information in there! Let's also do a pwiarwise Fst Matrix based on Weir and Cockerham, 1984.
 
@@ -200,11 +155,17 @@ colnames(x$scores)<-paste("PC",1:20,sep="")
 plot(x, option = "screeplot")
 ```
 
+![](populationstructure_tuto_files/figure-markdown_github/unnamed-chunk-9-1.png)
+
 ![](populationstructure_tuto_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 ``` r
 plot(x, option = "scores", pop=metadata$lake)  # you can put any factor as the group, here we look at the two lakes.
 ```
+
+    ## Warning: Use of `df$Pop` is discouraged. Use `Pop` instead.
+
+![](populationstructure_tuto_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 ![](populationstructure_tuto_files/figure-markdown_github/unnamed-chunk-6-2.png)
 
@@ -225,7 +186,7 @@ Note that once converted the file, faststructure arguments should not have the e
 getwd()
 ```
 
-    ## [1] "/Users/dutlu42p/repos/mahuika/bully_gbs/populationstructure_tuto"
+    ## [1] "/Users/dutlu42p/Documents/Work/projects/KirstenDonald/Cominella/bully_gbs/populationstructure_tuto"
 
 We run it for K=2 to K=10 as there is 10 sampling locations. It makes no sense to go above 10.
 
@@ -254,7 +215,6 @@ chooseK.py --input=faststructure_exploration/populations.snps
 
 The choose K function suggests K=2 that only the structure between lake is clearly visible, let's see how it looks like in practice:
 
-
 It is time to get back into R:
 
 ``` r
@@ -264,8 +224,6 @@ require("pophelper") # to install: http://www.royfrancis.com/pophelper/articles/
     ## Loading required package: pophelper
 
     ## Loading required package: ggplot2
-
-    ## Warning: package 'ggplot2' was built under R version 3.5.2
 
     ## pophelper v2.2.9 ready.
 
@@ -294,13 +252,14 @@ plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplaban
 
     ## Drawing plot ...
 
-    ## faststructureK2toK10Joined9Files-20200220121348.png exported.
+    ## faststructureK2toK10Joined9Files-20201217134758.png exported.
 
 ![](populationstructure_tuto_files/faststructureK2toK10Joined9Files-20200207152243.png)
 
 Looking at that file, We can clearly see the two clusters regardless of the set K. **But individuals are not ordered by populations.** Let's fix that to get pretty plots. Altough I could have provided us with clean and ordered files to start with, this is a common issue so let's go together through re-ordering faststructure files.
 
-The easiest way to deal with re-ordering will be to have a version of [metadata_clean.txt](metadata_clean.txt) that is sorted in the way we want our structure plots. Then we can determine the new_order of samples. I provided such a file ordered by lake [metadata_reordered.txt](metadata_reordered.txt)
+The easiest way to deal with re-ordering will be to have a version of [metadata\_clean.txt](metadata_clean.txt) that is sorted in the way we want our structure plots. Then we can determine the new\_order of samples. I provided such a file ordered by lake [metadata\_reordered.txt](metadata_reordered.txt)
+
 ``` r
 #determine proper order numerically from old order
 metadata_reordered<-read.table("metadata_reordered.txt",h=T)
@@ -310,13 +269,15 @@ for (sample in metadata_reordered[,1]){
 }
 #IMPORTANT CHECK: ALL SAMPLES ARE HERE
 length(new_order)== dim(metadata)[1]
-
 ```
+
+    ## [1] TRUE
+
 The new order is a set of numbers. the first number is the position of the first individual we want from our input file. I find orders always a bit tricky to deal with, but that might be the simplest way!
 
 Next, we re-sort all our structure files according to this re-ordered file.
 
-```
+``` r
 #find files
 filestoread<-paste("faststructure_exploration/",list.files(path="faststructure_exploration/",pattern="meanQ")[grep(paste("populations.snps",sep=""),perl=T,list.files(path="faststructure_exploration/",pattern= "meanQ"))],sep="")#simply a vector of the faststructure files we want to read
 print(filestoread)# The 9 files I need to reorder to check visually!
@@ -384,7 +345,7 @@ plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplaban
 
     ## Drawing plot ...
 
-    ## Joined9Files-20200220121405.png exported.
+    ## Joined9Files-20201217134819.png exported.
 
 ![](populationstructure_tuto_files/Joined9Files-20200207152308.png)
 
