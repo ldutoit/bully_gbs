@@ -14,8 +14,6 @@ contact Travis Ingram for access.
 ## SNP Calling
 The SNP calling is done [SNPcalling.md](SNPcalling.md) with Stacks/2.41. 
 
- Done on some variation of the [github.com/ldutoit/stoneflies_8pops](github.com/ldutoit/stoneflies_8pops) model (private, contact ldutoit for access)
-
 
 ## Population structure analysis
 
