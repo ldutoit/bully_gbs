@@ -16,6 +16,8 @@ For any questions or access to data files to <dutoit.ludovic@gmail.com>. The pip
 -   [poppr](https://cran.r-project.org/web/packages/poppr/readme/README.html)
 -   [pophelper](http://www.royfrancis.com/pophelper/articles/index.html)
 
+
+[Download the dataset](https://github.com/ldutoit/bully_gbs/blob/master/populationstructure_tuto/populations.snps.vcf)
 Loading files
 -------------
 
@@ -27,7 +29,7 @@ require("poppr")
 ```
 
 ``` r
-data <- read.pcadapt("populations.snps.vcf", type = "vcf") # New dataset https://github.com/ldutoit/bully_gbs/blob/master/populationstructure_tuto/populations.snps.vcf
+data <- read.pcadapt("populations.snps.vcf", type = "vcf") # New dataset 
 ```
 
     ## Warning in file2other(input, type, match.arg(type.out), match.arg(allele.sep)):
