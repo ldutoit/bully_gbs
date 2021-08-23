@@ -261,7 +261,7 @@ plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplaban
 
 Looking at that file, We can clearly see the two clusters regardless of the set K. **But individuals are not ordered by populations.** Let's fix that to get pretty plots. Altough I could have provided us with clean and ordered files to start with, this is a common issue so let's go together through re-ordering faststructure files.
 
-###m Re-ordering structure plot
+### Re-ordering structure plot
 
 The easiest way to deal with re-ordering will be to have a version of [metadata_clean.txt](metadata_clean.txt) that is sorted in the way we want our structure plots. Then we can determine the new\_order of samples. I provided such a file ordered by lake [metadata\_reordered.txt](metadata_reordered.txt)
 
