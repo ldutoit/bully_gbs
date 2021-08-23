@@ -261,16 +261,19 @@ plotQ(flist,imgoutput="join",showindlab=T,useindlab=T,height=7,width=70,grplaban
 
 Looking at that file, We can clearly see the two clusters regardless of the set K. **But individuals are not ordered by populations.** Let's fix that to get pretty plots. Altough I could have provided us with clean and ordered files to start with, this is a common issue so let's go together through re-ordering faststructure files.
 
-The easiest way to deal with re-ordering will be to have a version of [metadata\_clean.txt](metadata_clean.txt) that is sorted in the way we want our structure plots. Then we can determine the new\_order of samples. I provided such a file ordered by lake [metadata\_reordered.txt](metadata_reordered.txt)
+###m Re-ordering structure plot
+
+The easiest way to deal with re-ordering will be to have a version of [metadata_clean.txt](metadata_clean.txt) that is sorted in the way we want our structure plots. Then we can determine the new\_order of samples. I provided such a file ordered by lake [metadata\_reordered.txt](metadata_reordered.txt)
 
 ``` r
+#metadata<-read.table("metadata_clean.txt",h=T) # in case you had not read it earlier.
 #determine proper order numerically from old order
 metadata_reordered<-read.table("metadata_reordered.txt",h=T)
 new_order<-c()
-for (sample in metadata_reordered[,1]){
+for (sample in metadata_reordered[,1]){ 
   new_order<-c(new_order,which(metadata[,1]==sample))
 }
-#IMPORTANT CHECK: ALL SAMPLES ARE HERE
+#IMPORTANT CHECK: ALL SAMPLES ARE found in the reordered file
 length(new_order)== dim(metadata)[1]
 ```
 
@@ -281,7 +284,7 @@ The new order is a set of numbers. the first number is the position of the first
 Next, we re-sort all our structure files according to this re-ordered file.
 
 ``` r
-#find files
+#find  mean Q files. If you are plotting other files look for those. 
 filestoread<-paste("faststructure_exploration/",list.files(path="faststructure_exploration/",pattern="meanQ")[grep(paste("populations.snps",sep=""),perl=T,list.files(path="faststructure_exploration/",pattern= "meanQ"))],sep="")#simply a vector of the faststructure files we want to read
 print(filestoread)# The 9 files I need to reorder to check visually!
 ```
